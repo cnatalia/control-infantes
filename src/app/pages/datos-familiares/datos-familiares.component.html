@@ -1,0 +1,161 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Logo</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">Javascript</a></li>
+      <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+  </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+  <li><a href="sass.html">Sass</a></li>
+  <li><a href="badges.html">Components</a></li>
+  <li><a href="collapsible.html">Javascript</a></li>
+  <li><a href="mobile.html">Mobile</a></li>
+</ul>
+<div class="container">
+  <div class="row">
+    <h1>Creación de familia</h1>
+    <form [formGroup]="form" novalidate class="col s12">
+      <div class="infante cuadro">
+        <span class="titulo">Datos del infante</span>
+        <div class="row">
+          <div class="input-field col s8">
+            <input id="nombre_infante" type="text" class="validate" formControlName="nombreInfante">
+            <label for="nombre_infante">Nombre infante</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8">
+            <input id="direccion" type="text" class="validate" formControlName="direccion">
+            <label for="direccion">Dirección</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8">
+            <input id="ciudad" type="text" class="validate" formControlName="ciudad">
+            <label for="ciudad">Ciudad</label>
+          </div>
+        </div>
+      </div>
+
+      <span class="titulo">Datos de los familiares</span>
+      <ul class="collapsible" materialize="collapsible" formArrayName="familiaresArray">
+        <li *ngFor="let student of familiaresArray.controls; let i = index" [formGroupName]="i">
+          <div class="collapsible-header">
+            <i class="material-icons">filter_drama</i>
+            Familiar
+            <span class="new badge">4</span></div>
+          <div class="collapsible-body">
+
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="nombre_acompanante" type="text" class="validate" formControlName="nombre">
+                <label for="nombre_acompanante">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="parentesco" type="text" class="validate" formControlName="parentesco">
+                <label for="parentesco">Parentesco</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="edad" type="text" class="validate" formControlName="edad">
+                <label for="edad">Edad</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <select formControlName="tipoDocumento" materialize="material_select" name="propertySelector">
+                  <option value="" disabled selected>Selecciona</option>
+                  <option value="1">Cedula de ciudadania</option>
+                  <option value="2">Tarjeta de identidad</option>
+                  <option value="3">Nuip</option>
+                </select>
+                <label>Tipo de documento</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="numeroDocumento" type="number" class="validate" formControlName="numeroDocumento">
+                <label for="numeroDocumento">Número de documento</label>
+              </div>
+            </div>
+            <label for="">Dirección</label>
+            <div class="row">
+              <label for="">Seleccionar la misma del infante?</label>
+              <div class="row">
+
+                <label>
+                  <input class="with-gap" type="radio" value="si" checked formControlName="mismaDireccion" />
+                  <span>Sí</span>
+                </label>
+                <label>
+                  <input class="with-gap" type="radio" value="no" formControlName="mismaDireccion" />
+                  <span>No</span>
+                </label>
+              </div>
+              <div class="row" *ngIf="this.mismaDireccionTouch">
+                <div class="input-field col s8">
+                  <input id="direccionFamiliar" type="text" class="validate" formControlName="direccionFamiliar">
+                  <label for="direccionFamiliar">Dirección</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="celular" type="text" class="validate" formControlName="celular">
+                <label for="celular">Célular</label>
+              </div>
+            </div>
+
+            <span class="titulo">Información financiera</span>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="valorCupo" type="text" class="validate" formControlName="valorCupo">
+                <label for="valorCupo">Valor del cupo</label>
+              </div>
+            </div>
+            <span class="titulo">Adicionales</span>
+            <div class="row">
+
+              <div class="input-field col s8">
+                <input id="adicionalCartagena" type="text" class="validate" formControlName="adicionalCartagena">
+                <label for="adicionalCartagena">Dia Cartagena</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="adicionalMultipaseo" type="text" class="validate" formControlName="adicionalMultipaseo">
+                <label for="adicionalMultipaseo">Día multipaseo</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="adicionalKit" type="text" class="validate" formControlName="adicionalKit">
+                <label for="adicionalKit">Kit ceremonia</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8">
+                <input id="valorTotal" type="text" class="validate" formControlName="valorTotal">
+                <label for="valorTotal">Valor total plan</label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="row">
+        <a class="waves-effect indigo accent-1 btn-small col s2" (click)="crearFamiliar()">+Agregar</a>
+      </div>
+      <div class="row">
+        <a class="waves-effect indigo accent-1 btn-small col s2">Guardar infante</a>
+      </div>
+    </form>
+  </div>
+</div>

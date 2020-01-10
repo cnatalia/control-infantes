@@ -1,0 +1,23 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .row-home {
+ 
+    border-radius: 5px;
+
+  }
+
+  .botones {
+    height: 329px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1{
+   color: #3d464a;
+  }
+}
